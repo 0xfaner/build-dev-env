@@ -21,7 +21,7 @@ sourceString=$(cat <<- EOF
 proxy() {
     if [[ \$@ == 'enable' ]]; then
         # Get host ip
-        export HOST_IP=$(ip route | grep default | awk '{print $3}');
+        export HOST_IP=\$(ip route | grep default | awk '{print \$3}');
         export PROXY_PORT=1080;
         export {all_proxy,ALL_PROXY}="socks5://\${HOST_IP}:\${PROXY_PORT}";
         export {ftp_proxy,FTP_PROXY}="http://\${HOST_IP}:\${PROXY_PORT}";
